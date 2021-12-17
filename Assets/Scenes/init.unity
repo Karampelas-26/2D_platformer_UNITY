@@ -922,6 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   livesCountText: {fileID: 778469879}
+  onDeathText: {fileID: 0}
   lives: 3
 --- !u!4 &286159743 stripped
 Transform:
@@ -5015,9 +5016,9 @@ RectTransform:
   m_Father: {fileID: 1150420544}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.5, y: 74}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370.5, y: -130.79999}
   m_SizeDelta: {x: 550, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778469879

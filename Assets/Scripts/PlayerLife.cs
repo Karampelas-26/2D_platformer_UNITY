@@ -45,7 +45,8 @@ public class PlayerLife : MonoBehaviour
     private IEnumerator Restart() {
         if (lives == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //gia na ksanafortwsei to level apo tin arxi
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name); //gia na ksanafortwsei to level apo tin arxi
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
         else
         {
