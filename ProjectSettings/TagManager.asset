@@ -7,6 +7,8 @@ TagManager:
   - Coin
   - ground
   - Trap
+  - edge
+  - checkpoint
   layers:
   - Default
   - TransparentFX

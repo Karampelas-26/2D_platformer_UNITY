@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CoinCollector : MonoBehaviour
 {
-    private int coins = 0;
+    [SerializeField] private int coins;
 
     [SerializeField] private Text coinsCountText;   //prints score on screen
 
