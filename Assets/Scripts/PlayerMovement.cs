@@ -57,8 +57,7 @@ public class PlayerMovement : MonoBehaviour
         //antonis
         if (OnLandEvent == null)
         {
-            OnLandEvent = new UnityEvent();/*
-            OnLandEvent.AddListener(Landing);*/
+            OnLandEvent = new UnityEvent();
         }
         //a
     }
@@ -111,10 +110,6 @@ public class PlayerMovement : MonoBehaviour
                     OnLandEvent.Invoke(); //kanei trigger to event pou kalei tin sunartisi pou orisame sto serializable OnLandEvent
             }
         }
-
-        //a
-
-        /*animator.SetFloat("speed", Mathf.Abs(directionX));*/
         UpdateAnimationState();
     }
     private void flip()
@@ -124,33 +119,15 @@ public class PlayerMovement : MonoBehaviour
     }
     private void UpdateAnimationState()
     {
-        MovementState state;
 
         if (directionX > 0f && !flipSide)
         {
-            state = MovementState.running;
             flip();
         }
         else if (directionX < 0f &&flipSide)
         {
-            state = MovementState.running;
             flip();
         }
-        else
-        {
-            state = MovementState.idle;
-        }
-
-        if (rigidbody.velocity.y > .1f)
-        {
-            state = MovementState.jumping;
-        }
-        else if (rigidbody.velocity.y < -.1f)
-        {
-            state = MovementState.falling;
-        }
-
-        animator.SetInteger("state", (int)state);
     }
 
     //checks if player stands on the ground

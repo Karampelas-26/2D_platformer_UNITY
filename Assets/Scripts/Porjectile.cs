@@ -31,7 +31,7 @@ public class Porjectile : MonoBehaviour
         if (!(collision.gameObject.CompareTag("Coin") || collision.gameObject.CompareTag("Trap")))
         {
 
-            Debug.Log("explode, booom!");
+            //Debug.Log("explode, booom!");
             hit = true;
             animator.SetTrigger("explode");
 
