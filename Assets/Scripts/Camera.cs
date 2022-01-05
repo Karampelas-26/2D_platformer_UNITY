@@ -11,12 +11,13 @@ public class Camera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        player = GameObject.Find("Player").transform;
         Vector2 playerPos = player.position; 
         Vector2 smoothPos = Vector2.Lerp(transform.position,playerPos, fSpeed*Time.deltaTime); 
 
