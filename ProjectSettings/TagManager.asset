@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - edge
   - checkpoint
+  - turn
   layers:
   - Default
   - TransparentFX

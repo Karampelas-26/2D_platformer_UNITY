@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed;
     //public int startPos;
-    //Transform[] points;
+   // public Transform[] points;
     private int i; //antistoixa me tin platforma
     public bool mustMove = true;
     public Transform groundCheck;
@@ -15,12 +15,15 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private BoxCollider2D collider;
     private Rigidbody2D rigidbody;
+    public Collider2D bodyCollider;
 
     [SerializeField] public LayerMask Layer;
 
     public Transform player;
-    public float range;
+    [SerializeField] public float range; //to ebala serialized etsi wste na tou dinw times analoga ean baraei apo makria i konta
     private float distance;
+
+    private float directionX = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -61,8 +64,17 @@ public class Enemy : MonoBehaviour
 
     public void Move()
     {
-        if (mustFlip || collider.IsTouchingLayers()) { 
-            Flip();
+        //if (Vector2.Distance(transform.position, points[i].position) < 0.02f)
+        //{
+            //i++;
+            //if (i == points.Length)
+            //{
+               // i = 0;
+           // }
+        //}
+        //transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+        if (mustFlip || bodyCollider.IsTouchingLayers()) { 
+        Flip();
         }
         rigidbody.velocity = new Vector2(speed * Time.fixedDeltaTime, rigidbody.velocity.y); //gia na kounietai o antipalos
     }
@@ -74,12 +86,12 @@ public class Enemy : MonoBehaviour
         mustMove = true; //to mustMove allazei times wste na min ginetai to flip oso kounietai
     }
 
-    public void MeleeAttack() { 
-
+    public void MeleeAttack() {
+        animator.SetBool("isAttacking",true);
     }
 
     public void RangeAttack()
     {
-
+        animator.SetBool("isAttacking",true);
     }
 }
