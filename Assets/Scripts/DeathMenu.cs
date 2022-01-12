@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class DeathMenu : MonoBehaviour
 {
     public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+    {   
+        SceneManager.LoadScene(StaticClass.CrossSceneInformation);
     }
 
     public void Exit()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene("startMenu");
     }
+
 }

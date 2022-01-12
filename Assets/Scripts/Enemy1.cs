@@ -8,9 +8,15 @@ public class Enemy1 : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D turnCollider;
     PolygonCollider2D damageCollider;
+    Animator animator;
+    Rigidbody2D rigidbody;
+    public Transform[] movingPoints; //einai pinakas giati einai panw apo ena simeio pou paei
+    private int i;
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         damageCollider = GetComponent<PolygonCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         turnCollider = GetComponent<BoxCollider2D>();
@@ -21,11 +27,12 @@ public class Enemy1 : MonoBehaviour
     {
         if (lookingRight())
         {
-            rb.velocity = new Vector2(-speed,0f);
+            rb.velocity = new Vector2(speed,0f);
         }
         else {
-            rb.velocity = new Vector2(speed, 0f);
+            rb.velocity = new Vector2(-speed, 0f);
         }
+
     }
 
     private bool lookingRight() {
@@ -38,7 +45,23 @@ public class Enemy1 : MonoBehaviour
         {
             transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         }
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            death();
+            
+        }
     }
 
+    private void death()
+    {
+        animator.SetTrigger("death");
+        rigidbody.bodyType = RigidbodyType2D.Static;
+
+    }
+
+    private void destroyEnemy()
+    {
+        Destroy(gameObject);
+    }
 
 }

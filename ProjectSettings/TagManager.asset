@@ -10,6 +10,8 @@ TagManager:
   - edge
   - checkpoint
   - turn
+  - background
+  - bullet
   layers:
   - Default
   - TransparentFX
