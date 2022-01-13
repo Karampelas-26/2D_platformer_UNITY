@@ -11,14 +11,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speed = 6f;
     [SerializeField] public float jumpForce = 6f;
 
-    //antontis
     [SerializeField] private Transform onGround;            // gia na elegxoume an einai sto edafos
     [SerializeField] private Transform onAir;               //gia na elegxoume ean einai ston aera
     [SerializeField] private LayerMask jumpableGround;      //pou mporei na pidiksei
 
     private bool isGrounded;
     private float groundedRadius = .2f;
-    //a
 
 
     private float directionX = 0.0f;
@@ -35,14 +33,12 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D bc;
 
 
-    //antonis
     [Header("Events")]
     [Space]
 
     public UnityEvent OnLandEvent;
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
-    //a
 
     // Start is called before the first frame update
     void Start()
@@ -54,12 +50,10 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
 
-        //antonis
         if (OnLandEvent == null)
         {
             OnLandEvent = new UnityEvent();
         }
-        //a
     }
 
     // Update is called once per frame
@@ -133,10 +127,8 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
-    //antonis
     public void Landing()
     {
         animator.SetBool("canJump", false);
     }
-    //a
 }
