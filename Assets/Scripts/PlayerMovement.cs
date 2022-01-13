@@ -69,9 +69,7 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.velocity = new Vector2(directionX * speed, rigidbody.velocity.y);
 
 
-        //antonis
         animator.SetFloat("speed", Mathf.Abs(directionX));
-        //a
 
         //each time player can jump maximum two times
         if (Input.GetButtonDown("Jump")) //if user presses space button
@@ -81,20 +79,19 @@ public class PlayerMovement : MonoBehaviour
                 rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
                 doublejump = true;
 
-                //antonis
+                SoundManager.playSound("jump");
                 animator.SetBool("canJump", true); //gia na deiksei to animation tou jump
                                                    //i canJump <> CanJump. to ena einai i metabliti gia ta animation
-                //a
+               
             }
             else if (doublejump)//if player has already jumped once
             {
+                SoundManager.playSound("jump");
                 rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
                 doublejump = false;
             }
             
         }
-
-        //antonis
 
         //kwdikas gia allagi animation otan epanerxetai sto edafos
         bool wasGrounded = isGrounded;

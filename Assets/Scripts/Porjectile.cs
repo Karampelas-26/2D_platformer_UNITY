@@ -29,7 +29,7 @@ public class Porjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!(collision.gameObject.CompareTag("Coin") || collision.gameObject.CompareTag("Trap")))
+        if (!(collision.gameObject.CompareTag("Coin") || collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("turn")|| collision.gameObject.CompareTag("checkpoint")))
         {
 
             //Debug.Log("explode, booom!");

@@ -7,7 +7,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackCooldwon;
     [SerializeField] private Transform firePoints;
     [SerializeField] private GameObject[] fireballs;
-
+    [SerializeField] public AudioClip onShootSound;
+    public AudioSource audio;
 
     private float cooldownTimer = Mathf.Infinity;
 
@@ -19,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         playermovement = GetComponent<PlayerMovement>();
         playerLife = GetComponent<PlayerLife>();
@@ -28,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && cooldownTimer > attackCooldwon && playerLife.isAlive())
         {
+            SoundManager.playSound("shoot");
             attack();
         }
 

@@ -36,6 +36,7 @@ public class PlayerLife : MonoBehaviour
     private void Die() {
         lives=lives -1;
         livesCountText.text = "Lives : " + lives;
+        SoundManager.playSound("death");
         animator.SetTrigger("death");
         animator.SetBool("canJump", false);
         alive = false;
