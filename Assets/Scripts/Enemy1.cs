@@ -5,7 +5,9 @@ using UnityEngine;
 public class Enemy1 : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] int lives;
     Rigidbody2D rb;
+    [SerializeField] private AudioSource deathSoundEffect;
     BoxCollider2D turnCollider;
     PolygonCollider2D damageCollider;
     Animator animator;
@@ -47,7 +49,11 @@ public class Enemy1 : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("bullet"))
         {
-            death();
+            deathSoundEffect.Play();
+            lives -= 1;
+            if (lives == 0) {
+                death(); 
+            }
             
         }
     }
@@ -55,6 +61,7 @@ public class Enemy1 : MonoBehaviour
     private void death()
     {
         animator.SetTrigger("death");
+        
         rigidbody.bodyType = RigidbodyType2D.Static;
 
     }

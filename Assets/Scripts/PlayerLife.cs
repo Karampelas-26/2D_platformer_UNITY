@@ -27,7 +27,7 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("edge")) { //an xtupisei kati tupou trap i pesei sto keno
+        if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("edge") || collision.gameObject.CompareTag("enemy")) { //an xtupisei kati tupou trap i pesei sto keno
             Die();
             
         }

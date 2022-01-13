@@ -14,6 +14,7 @@ public class Porjectile : MonoBehaviour
 
     private void Awake()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
 
@@ -41,7 +42,14 @@ public class Porjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            hit = true;
+            rigidbody.bodyType = RigidbodyType2D.Static;
+            animator.SetTrigger("explode");
+
+            boxCollider.enabled = false;
+        }
     }
 
     public void SetDirection(float _direction)
