@@ -49,6 +49,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background-cover
+    uniqueID: 2381764055
+    locked: 0
   - name: Background-city
     uniqueID: 2444742299
     locked: 0

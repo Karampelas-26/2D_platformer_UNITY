@@ -15,27 +15,31 @@ public class PlayerLife : MonoBehaviour
     private Vector3 respawnPoint;
     [SerializeField ]private int lives = 3;
     [SerializeField] private AudioSource collectionSoundEffect;
-    private CameraPosition camera;
+    BoxCollider2D collider;
+    private Camera camera;
     // Start is called before the first frame update
     private void Start()
     {
+        collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         playerm = GetComponent<PlayerMovement>();
         respawnPoint = transform.position;
-        camera = GetComponent<CameraPosition>();
+        camera = GetComponent<Camera>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("edge") || collision.gameObject.CompareTag("enemy")) { //an xtupisei kati tupou trap i pesei sto keno
+            
             Die();
             
         }
     }
 
     private void Die() {
-        lives=lives -1;
+        collider.enabled = false;
+        lives =lives -1;
         livesCountText.text = "Lives : " + lives;
         SoundManager.playSound("death");
         animator.SetTrigger("death");
@@ -56,9 +60,11 @@ public class PlayerLife : MonoBehaviour
             yield return new WaitForSeconds(1.1f);
             rigidbody.bodyType = RigidbodyType2D.Dynamic;
             animator.SetBool("canJump", true);
+            collider.enabled = true;
             transform.position = respawnPoint;
             GameObject newplayer=(GameObject)Instantiate(gameObject, respawnPoint, Quaternion.identity);
             newplayer.name = playerm.name;
+            
         }
     }
 

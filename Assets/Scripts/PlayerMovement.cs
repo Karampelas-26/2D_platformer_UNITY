@@ -12,8 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speed = 6f;
     [SerializeField] public float jumpForce = 6f;
 
-    [SerializeField] private Transform onGround;            // gia na elegxoume an einai sto edafos
-    [SerializeField] private Transform onAir;               //gia na elegxoume ean einai ston aera
+    [SerializeField] private Transform onGround;            // gia na elegxoume an einai sto edafos      
     [SerializeField] private LayerMask jumpableGround;      //pou mporei na pidiksei
 
     private bool isGrounded;
@@ -143,9 +142,12 @@ public class PlayerMovement : MonoBehaviour
                 System.Threading.Thread.Sleep(1500);
                 SceneManager.LoadScene("startMenu");
             }
-            SoundManager.playSound("clear");
-            System.Threading.Thread.Sleep(1500); //delay 1500 ms
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            else { 
+                SoundManager.playSound("clear");
+                System.Threading.Thread.Sleep(1500); //delay 1500 ms
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+            }
+           
         }
     }
 }

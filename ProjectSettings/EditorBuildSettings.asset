@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/antonis_scene.unity
     guid: 9459b34ab9666ef49830e7050306f271
   - enabled: 1
-    path: Assets/Scenes/init.unity
+    path: Assets/Scenes/euaggelia_scene.unity
     guid: 5e1f326f9d11c2a49a8b27047694fe6f
   - enabled: 1
     path: Assets/Scenes/OnDeath.unity

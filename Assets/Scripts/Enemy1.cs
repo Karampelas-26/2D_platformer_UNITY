@@ -8,8 +8,7 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] int lives;
     Rigidbody2D rb;
     [SerializeField] private AudioSource deathSoundEffect;
-    BoxCollider2D turnCollider;
-    PolygonCollider2D damageCollider;
+    BoxCollider2D collider;
     Animator animator;
     Rigidbody2D rigidbody;
     public Transform[] movingPoints; //einai pinakas giati einai panw apo ena simeio pou paei
@@ -19,9 +18,8 @@ public class Enemy1 : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        damageCollider = GetComponent<PolygonCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        turnCollider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -52,6 +50,7 @@ public class Enemy1 : MonoBehaviour
             deathSoundEffect.Play();
             lives -= 1;
             if (lives == 0) {
+                collider.enabled = false;
                 death(); 
             }
             
