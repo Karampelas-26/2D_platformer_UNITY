@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events; //import gia na ftiaksoume ta events
 using UnityEngine.EventSystems;
 
@@ -130,5 +131,21 @@ public class PlayerMovement : MonoBehaviour
     public void Landing()
     {
         animator.SetBool("canJump", false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("endOfLevel"))
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                SoundManager.playSound("clear");
+                System.Threading.Thread.Sleep(1500);
+                SceneManager.LoadScene("startMenu");
+            }
+            SoundManager.playSound("clear");
+            System.Threading.Thread.Sleep(1500); //delay 1500 ms
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

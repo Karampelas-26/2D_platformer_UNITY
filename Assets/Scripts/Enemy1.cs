@@ -61,8 +61,8 @@ public class Enemy1 : MonoBehaviour
     private void death()
     {
         animator.SetTrigger("death");
-        
         rigidbody.bodyType = RigidbodyType2D.Static;
+        
 
     }
 

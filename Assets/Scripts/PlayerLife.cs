@@ -14,6 +14,7 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement playerm;
     private Vector3 respawnPoint;
     [SerializeField ]private int lives = 3;
+    [SerializeField] private AudioSource collectionSoundEffect;
     private CameraPosition camera;
     // Start is called before the first frame update
     private void Start()
@@ -65,6 +66,14 @@ public class PlayerLife : MonoBehaviour
     {
         if (collision.tag == "checkpoint") {
             respawnPoint = transform.position; //gia na kanei respawn sto checkpoint
+        }
+
+        if (collision.gameObject.CompareTag("heart"))
+        {
+            collectionSoundEffect.Play();   //sound effect when coin selected
+            Destroy(collision.gameObject);  // destroys coin object completely
+            lives++;
+            livesCountText.text = "Lives : " + lives; //prints score on screen
         }
     }
 
