@@ -48,7 +48,7 @@ public class PlayerLife : MonoBehaviour
         rigidbody.bodyType = RigidbodyType2D.Static; //gia na min mporei o xaraktiras na kounithei otan pethainei
     }
 
-    private IEnumerator Restart() {
+    private IEnumerator  Restart() {
         if (lives == 0)
         {
             StaticClass.CrossSceneInformation = SceneManager.GetActiveScene().name;
@@ -56,14 +56,15 @@ public class PlayerLife : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject,1.11f);
+            /*Destroy(gameObject, 1.11f);*/
             yield return new WaitForSeconds(1.1f);
             rigidbody.bodyType = RigidbodyType2D.Dynamic;
             animator.SetBool("canJump", true);
             collider.enabled = true;
+            alive = true;
             transform.position = respawnPoint;
-            GameObject newplayer=(GameObject)Instantiate(gameObject, respawnPoint, Quaternion.identity);
-            newplayer.name = playerm.name;
+            /*GameObject newplayer=(GameObject)Instantiate(gameObject, respawnPoint, Quaternion.identity);*/
+            /*newplayer.name = playerm.name;*/
             
         }
     }

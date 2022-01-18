@@ -15,7 +15,7 @@ public class Camera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         player = GameObject.Find("Player").transform;
         Vector2 playerPos = player.position; 

@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fSpeed: 7
-  posY: 0.3
+  posY: 0
 --- !u!1 &97715444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12941,7 +12941,6 @@ MonoBehaviour:
   speed: 6
   jumpForce: 18
   onGround: {fileID: 906594457}
-  onAir: {fileID: 784503888}
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
